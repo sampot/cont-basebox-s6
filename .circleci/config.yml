@@ -1,4 +1,11 @@
 version: 2
+
+workflows:
+   build:
+     jobs:
+       - deploy:
+           context: DOCKER_HUB_LOGIN
+
 jobs:
   build:
     docker:
