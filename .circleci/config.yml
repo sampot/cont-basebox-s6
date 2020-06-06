@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:lts-buster
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: sudo apt-get install -y make
+      - run:
+          name: Build Docker image
+          command: make build
+      - deploy:
+          name: Push Docker image
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              echo ${DOCKER_PASS} | docker login --username ${DOCKER_USER} --password-stdin
+              make publish
+            fi
