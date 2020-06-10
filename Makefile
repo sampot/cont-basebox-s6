@@ -7,6 +7,8 @@ all: build
 
 build: Dockerfile
 	docker build  -t $(GROUP)/$(NAME):$(VERSION) .
+	docker tag  $(GROUP)/$(NAME):$(VERSION) $(GROUP)/$(NAME):latest
 
-publish: build
+publish:
 	docker push $(GROUP)/$(NAME):$(VERSION)
+	docker push $(GROUP)/$(NAME):latest

@@ -1,3 +1,5 @@
-# Basebox image with S6 process manager
+# SPK Basebox image with S6 process manager
 
-This container image is intended to be used as the base for small-size containers which need glibc instead of musl. Busybox is used in place of many utilities to reduce image footprint.
+Basebox image is intended to be used as the base for small-size containers which need glibc instead of musl.
+
+This image contains S6 support.
